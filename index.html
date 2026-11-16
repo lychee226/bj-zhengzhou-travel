@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>北京→郑州·洛阳·开封 3-4天路书</title>
+<script src="https://registry.npmmirror.com/echarts/5.6.0/files/dist/echarts.min.js"></script>
+<style>
+:root{--bg:#FFF8F0;--tint:#FBEFE2;--surface:#fff;--t1:#2A1D14;--t2:#6B5445;--t3:#A8917E;--acc:#E8552D;--acc-h:#CF4522;--on:#fff;--good:#147A54;--radius:12px;--btnr:12px;--disp:'Inter',-apple-system,'PingFang SC',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--bg);color:var(--t2);font-family:var(--disp);line-height:1.6;-webkit-text-size-adjust:100%}
+img{max-width:100%}
+.hero{position:relative;width:100%;min-height:100vh;min-height:100svh;background:url('https://images.pexels.com/photos/37755655/pexels-photo-37755655.jpeg?auto=compress&cs=tinysrgb&w=1600&q=75') center/cover no-repeat;display:flex;align-items:flex-end;color:#fff}
+.hero .mask{position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,29,20,.15),rgba(42,29,20,.72));z-index:1}
+.hero .inner{position:relative;z-index:2;max-width:1040px;margin:0 auto;width:100%;padding:32px 20px 40px}
+.hero .crumb{font-size:13px;opacity:.9;margin-bottom:12px}
+.hero h1{font-size:clamp(34px,6vw,60px);font-weight:800;line-height:1.1;max-width:700px}
+.hero .sub{margin-top:12px;font-size:clamp(15px,2.5vw,19px);opacity:.95;max-width:620px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.hero .mchip{background:rgba(255,255,255,.18);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 14px;font-size:13px}
+.hero .badge{position:absolute;top:14px;right:14px;z-index:3;background:rgba(0,0,0,.45);color:#fff;font-size:11px;padding:4px 10px;border-radius:6px}
+nav.nav{position:sticky;top:0;z-index:50;background:rgba(255,248,240,.9);backdrop-filter:blur(8px);border-bottom:1px solid rgba(42,29,20,.1)}
+.nav-in{max-width:1040px;margin:0 auto;display:flex;gap:4px;overflow-x:auto;padding:10px 16px;-webkit-overflow-scrolling:touch}
+.nav-in a{flex:0 0 auto;color:var(--t2);text-decoration:none;font-size:14px;padding:6px 12px;border-radius:8px;white-space:nowrap}
+.nav-in a.active{background:var(--acc);color:var(--on);font-weight:600}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:40px 0}
+h2.h2{font-size:26px;font-weight:800;color:var(--t1);margin-bottom:6px}
+.eyebrow{display:inline-block;background:rgba(232,85,45,.14);color:var(--acc);font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:10px;letter-spacing:.04em}
+.lead{color:var(--t2);margin-bottom:18px}
+.genline{background:var(--tint);border:1px solid rgba(42,29,20,.08);border-radius:var(--radius);padding:12px 16px;font-size:13px;color:var(--t2);margin-bottom:22px}
+.kpi{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px}
+@media(min-width:640px){.kpi{grid-template-columns:repeat(3,1fr)}}
+.kpi .box{background:var(--surface);border-radius:var(--radius);padding:14px;border:1px solid rgba(42,29,20,.08)}
+.kpi .k{font-size:12px;color:var(--t3)}
+.kpi .v{font-size:18px;font-weight:800;color:var(--t1);margin-top:2px}
+.tagrow{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
+.pill{color:var(--good);background:rgba(20,122,84,.13);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700}
+.mapbox{background:var(--surface);border-radius:var(--radius);padding:14px;border:1px solid rgba(42,29,20,.08);margin-bottom:18px}
+.mapbox .maptitle{font-size:14px;font-weight:700;color:var(--t1);margin-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+.mapbox .mapnote{font-size:12px;color:var(--t3);font-weight:400}
+.ifr{width:100%;border:0;border-radius:10px;background:#eae0d5;min-height:280px}
+.ifrbig{min-height:340px}
+.altgrid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+@media(min-width:768px){.altgrid{grid-template-columns:1fr 1fr}}
+.card{background:var(--surface);border-radius:var(--radius);border:1px solid rgba(42,29,20,.09);padding:18px;margin-bottom:18px}
+.dayhead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.daynum{background:var(--acc);color:var(--on);font-weight:800;font-size:14px;border-radius:8px;padding:6px 12px}
+.dayname{font-size:20px;font-weight:800;color:var(--t1)}
+.mode{font-size:13px;color:var(--acc);font-weight:700;background:rgba(232,85,45,.12);padding:3px 10px;border-radius:999px}
+.fields{font-size:14px;margin-top:8px}
+.fields b{color:var(--t1)}
+.row{margin:4px 0}
+.row .lab{color:var(--t3);font-size:13px;margin-right:4px}
+.badge-r{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;margin-left:6px;vertical-align:middle}
+.br{background:#E1F3EC;color:var(--good)}
+.ba{background:#FFF1E8;color:var(--acc)}
+.imgs{width:100%;margin-top:12px;border-radius:10px}
+.attr{display:block;font-size:11px;color:var(--t3);margin-top:4px}
+.attr a{color:var(--t3);text-decoration:underline}
+navbtn{display:block;width:100%;text-align:center;background:var(--acc);color:var(--on);font-weight:800;font-size:16px;padding:13px;border-radius:var(--btnr);text-decoration:none;margin-top:14px}
+navbtn:hover{background:var(--acc-h)}
+.plans{margin-top:14px}
+.plan{background:var(--tint);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:14px}
+.plan b{color:var(--acc)}
+.warn{background:#FFF6E9;border-left:4px solid #E8A33D;border-radius:6px;padding:10px 12px;margin:10px 0;font-size:13px}
+.good{background:#EAF5EF;border-left:4px solid var(--good);border-radius:6px;padding:10px 12px;margin:10px 0;font-size:13px}
+.sc-btn{width:100%;background:var(--tint);border:1px solid rgba(42,29,20,.1);color:var(--t1);font-weight:700;font-size:14px;border-radius:10px;padding:12px;margin-top:12px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.sc-btn .arr{transition:transform .25s;display:inline-block}
+.sc-body{display:none;background:var(--tint);border-radius:10px;padding:14px;margin-top:10px;font-size:14px}
+.sc-body.open{display:block}
+.sc-body .tt{font-weight:800;color:var(--t1);margin:8px 0 2px;font-size:15px}
+.sc-body p{color:var(--t2)}
+.sc-body .badge{display:inline-block;font-size:11px;font-weight:700;color:var(--acc);background:rgba(232,85,45,.12);border-radius:5px;padding:2px 8px;margin-bottom:6px}
+.appendix{background:var(--tint);border-radius:var(--radius);padding:20px;font-size:14px;margin-top:10px}
+.appendix h3{color:var(--t1);font-size:18px;margin:14px 0 6px}
+.appendix ul{margin-left:18px}
+.appendix li{margin:4px 0}
+footer{background:var(--t1);color:rgba(255,255,255,.75);text-align:center;padding:24px 16px;font-size:13px}
+footer b{color:#fff}
+</style>
+</head>
+<body data-theme="warm-commerce" data-align="center">
+
+<div class="hero">
+  <div class="mask"></div>
+  <span class="badge">路书 · 2026-11-15 生成</span>
+  <div class="inner">
+    <div class="crumb">华北人文高铁之旅 · 世界遗产 + 宋文化</div>
+    <h1>北京 → 郑州 · 洛阳 · 开封</h1>
+    <div class="sub">三天两城 + 世界文化遗产龙门石窟、宋文化主题园清明上河园——一条串起河南千年文脉的高铁轻松线，每天 9 点后从容出发。</div>
+    <div class="meta">
+      <span class="mchip">🗓 3-4 天</span><span class="mchip">🚄 高铁往返</span><span class="mchip">📏 全程约 700km</span><span class="mchip">💰 约 ¥2000-2800/人</span><span class="mchip">🌤 春秋最佳</span>
+    </div>
+  </div>
+</div>
+
+<nav class="nav"><div class="nav-in">
+  <a href="#day1">DAY1 郑州</a><a href="#day2">DAY2 洛阳</a><a href="#day3">DAY3 开封</a><a href="#day4">DAY4 返京</a><a href="#overview">总览</a><a href="#appendix">附录</a>
+</div></nav>
+
+<section id="overview"><div class="wrap">
+  <span class="eyebrow">行前决策</span>
+  <h2 class="h2">一句话定位</h2>
+  <p class="lead">一条华北平原上的<b>人文轻奢高铁线</b>：先抵河南省会郑州逛博物院与二七塔，西行洛阳看世界文化遗产龙门石窟的卢舍那大佛，再东进开封沉浸北宋《清明上河图》里的宋文化。全程城市高铁串联、路面全铺装、无高原，难度低，适合第一次到河南的家庭 / 朋友 / 亲子游。</p>
+  <div class="genline">📅 本路书生成于 <b>2026-11-15</b>，高铁、门票、自驾等易变信息基于该时刻实时数据核验，出行前请按附录来源二次确认。</div>
+  <div class="kpi">
+    <div class="box"><div class="k">总天数</div><div class="v">3-4 天</div></div>
+    <div class="box"><div class="k">高铁里程</div><div class="v">约 1400km</div></div>
+    <div class="box"><div class="k">自驾里程</div><div class="v">约 700km</div></div>
+    <div class="box"><div class="k">每日车程</div><div class="v">高铁 2.5-4h</div></div>
+    <div class="box"><div class="k">最佳季节</div><div class="v">4-5月 / 9-10月</div></div>
+    <div class="box"><div class="k">预算区间</div><div class="v">¥2000-2800</div></div>
+  </div>
+  <div class="tagrow"><span class="pill">🏛 世界遗产</span><span class="pill">🎏 宋文化</span><span class="pill">🍲 豫菜美食</span><span class="pill">👨‍👩‍👧 适合全家</span></div>
+  <div class="mapbox">
+    <div class="maptitle">全程总览示意 <span class="mapnote">示意图，非真实轨迹与比例</span></div>
+    <div id="routeMap" style="width:100%;height:420px"></div>
+  </div>
+  <div class="mapbox">
+    <div class="maptitle">全程高德地图（官方网页）</div>
+    <iframe class="ifr ifrbig" src="https://www.amap.com/search?query=%E9%83%91%E5%B7%9E&city=%E9%83%91%E5%B7%9E" loading="lazy"></iframe>
+  </div>
+  <div class="mapbox"><div class="maptitle">装备与准备</div>
+    <p style="font-size:14px">身份证（高铁/预约均需）· 学生/教师证（可享半价）· 龙门石窟 &amp; 清明上河园公众号提前预约 · 舒适平底鞋（景区步行量大）· 充电宝 · 雨具（河南夏季多雨）。河南无高原，无需高反准备。</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <span class="eyebrow">每日行程</span>
+  <h2 class="h2">分段路书</h2>
+  <p class="lead">每天 9 点后出发，酒店与当日美食均写进对应日期，结尾无独立罗列。</p>
+  
+<div class="card" id="day1">
+ <div class="dayhead"><span class="daynum">DAY 1</span><span class="dayname">北京 → 郑州 · 抵达 + 省会人文一日</span><span class="mode">🚄 高铁 + 地铁</span></div>
+ <div class="fields">
+  <div class="row"><span class="lab">起终点：</span><b>北京西站 → 郑州东站</b> · 约 690km · 车程 2h19m</div>
+  <div class="row"><span class="lab">本段交通：</span>G371 高铁 <b>10:05 北京西发车 → 12:24 郑州东到达</b>（二等座约 ¥371，经停石家庄）<span class="badge-r br">🟢 实时</span></div>
+  <div class="row"><span class="lab">路况：</span>全程铺装，高铁正点率高，郑州东站可无缝换地铁 1 号线进市区</div>
+ </div>
+ <div class="mapbox"><div class="maptitle">本段示意路线 <span class="mapnote">示意图，非真实轨迹与比例</span></div><div id="dayMap1" style="width:100%;height:260px"></div></div>
+ <div class="mapbox"><div class="maptitle">郑州市区地图（高德官方网页）</div><iframe class="ifr" src="https://www.amap.com/search?query=%E4%BA%8C%E4%B8%83%E5%B9%BF%E5%9C%BA&city=%E9%83%91%E5%B7%9E" loading="lazy"></iframe></div>
+ <div class="row"><span class="lab">今日安排：</span></div>
+ <ul class="fields" style="list-style:none">
+  <li class="row">📌 <b>12:24</b> 抵郑州东站 → 地铁 1 号线约 20 分钟抵市区，先入住酒店放下行李</li>
+  <li class="row">🛏️ <b>酒店（预算 300-400 元/晚）</b>：锦江都城酒店(郑州二七广场店) 约 ¥328-388；备选：郑州建业天筑酒店 ¥359-399 / 如家商旅(二七广场店) ¥319-369 <span class="badge-r ba">⚪ 估算</span></li>
+  <li class="row">🍜 <b>午餐（已并入今日）</b>：萧记三鲜烩面（老字号，人均 ¥30-45）+ 蔡记蒸饺 <a class="attr" href="https://uri.amap.com/search?keyword=%E8%90%A7%E8%AE%B0%E4%B8%89%E9%B2%9C%E7%83%A9%E9%9D%A2" target="_blank">高德找店</a></li>
+  <li class="row">🏛️ <b>14:30</b> 河南省博物院（免费，需公众号预约）→ 重点看莲鹤方壶、云纹铜禁</li>
+  <li class="row">📍 <b>17:00</b> 二七纪念塔 + 二七广场，登塔俯瞰老城</li>
+  <li class="row">🍜 <b>晚餐（已并入今日）</b>：合记烩面 / 葛记焖饼（人均 ¥30-45）+ 郑州方中山胡辣汤 <a class="attr" href="https://uri.amap.com/search?keyword=%E5%90%88%E8%AE%B0%E7%83%A9%E9%9D%A2" target="_blank">高德找店</a></li>
+  <li class="row">🌃 <b>19:30</b> 德化街步行街夜景 → 返回酒店休息</li>
+ </ul>
+ <div class="plans">
+  <div class="good">✅ 补给：郑州东站地铁 1/5 号线直达市区，站内有餐饮便利店；酒店周边超市、药店齐全。</div>
+  <div class="warn">⚠️ 坑点：河南省博物院周一闭馆且需提前在"河南博物院"公众号预约免费票，旺季名额紧张请提前 1-3 天约。二七塔周一闭塔。</div>
+  <div class="plan">🔀 <b>本段 Plan B：</b>若 G371 无票，可改乘当日任意 9 点后车次（如 G669/G683 等约 2.5h 车程）；若省博约满，改游郑州博物馆或郑州之林公园。</div>
+ </div>
+ <div class="mapbox"><div class="maptitle">看点实景</div><img class="imgs" src="https://pixabay.com/get/g71812927f96616517c576a9f66d4b641121e9c2b6eb5202ba721af139473cb656e1b3a717e61bd7c765c98c0bf7eb94a162470271fd9ed06f1b55f87224e6e30_1280.jpg" alt="河南省博物院青铜器"><small class="attr"><a href="https://pixabay.com/photos/ancient-china-bronze-simu-wuding-1797416/" target="_blank">河南省博物院 · 青铜器（Pixabay）</a></small></div>
+ <button class='sc-btn' onclick='toggle(this)'><span>【河南省博物院】展开详细攻略</span><span class='arr'>▾</span></button><div class='sc-body'><span class='badge'>免费(需预约)</span> <span class='badge'>周二-周日9:00-17:00</span><div class='tt'>深度看点</div><p>国家一级博物馆，馆藏17万余件，尤以青铜器著称。镇馆之宝：莲鹤方壶、云纹铜禁、妇好鸮尊。主展馆按时间轴从中原远古到宋金，2-3小时可深度逛完。</p><div class='tt'>拍照打卡</div><p>📷 拍照打卡点：主展馆大厅穹顶、莲鹤方壶展柜、中原古代文明馆序厅。</p><div class='tt'>周边美食</div><p>🍜 周边美食：博物院附近有萧记三鲜烩面、蔡记蒸饺（人均30-50元）。</p><div class='tt'>游览动线</div><p>🗺 游览动线：进馆先领导览图→从1楼中原古代文明展按朝代顺次上楼→重点看2楼青铜器厅→3楼近代革命与宋金展厅→出口文创店。</p></div>
+<button class='sc-btn' onclick='toggle(this)'><span>【二七纪念塔】展开详细攻略</span><span class='arr'>▾</span></button><div class='sc-body'><span class='badge'>免费</span> <span class='badge'>9:00-17:00(周一闭塔)</span><div class='tt'>深度看点</div><p>为纪念京汉铁路大罢工而建的双塔地标，郑州城市象征。塔身两座平行塔，寓意"二七"，登塔可俯瞰郑州老城与二七广场。</p><div class='tt'>拍照打卡</div><p>📷 拍照打卡点：二七广场正前方拍双塔全貌，晚上亮灯后倒影更出片。</p><div class='tt'>周边美食</div><p>🍜 周边美食：二七广场一带的合记烩面、葛记焖饼都是老字号（人均30-45元）。</p><div class='tt'>游览动线</div><p>🗺 游览动线：二七广场周边步行即到→登塔约40分钟→出塔逛德化街商业步行街→晚餐后回酒店。</p></div>
+ <a class="navbtn" href="https://uri.amap.com/marker?position=113.654,34.749&name=二七纪念塔">一键导航</a>
+</div>
+
+  
+<div class="card" id="day2">
+ <div class="dayhead"><span class="daynum">DAY 2</span><span class="dayname">郑州 → 洛阳 · 龙门石窟世界遗产一日</span><span class="mode">🚄 高铁 + 打车</span></div>
+ <div class="fields">
+  <div class="row"><span class="lab">起终点：</span><b>郑州 → 洛阳龙门站 → 龙门石窟 → 洛邑古城</b></div>
+  <div class="row"><span class="lab">本段交通：</span>G 高铁 <b>09:00 郑州东发车 → 约 09:40 洛阳龙门站</b>（二等座约 ¥80-100）→ 打车 15 分钟到石窟<span class="badge-r br">🟢 实时</span></div>
+  <div class="row"><span class="lab">门票：</span>龙门石窟 <b>90 元/人（旺季 120 元）</b>，学生/教师半价 45 元，60 岁以上及 1.4 米以下儿童约 0 元票。必须微信「龙门石窟官微」实名分时预约，提前 7 天、每日 00:10 放票<span class="badge-r br">🟢 实时</span></div>
+ </div>
+ <div class="mapbox"><div class="maptitle">本段示意路线 <span class="mapnote">示意图，非真实轨迹与比例</span></div><div id="dayMap2" style="width:100%;height:260px"></div></div>
+ <div class="mapbox"><div class="maptitle">龙门石窟周边地图（高德官方网页）</div><iframe class="ifr" src="https://www.amap.com/search?query=%E9%BE%99%E9%97%A8%E7%9F%B3%E7%AA%9F&city=%E6%B4%9B%E9%98%B3" loading="lazy"></iframe></div>
+ <ul class="fields" style="list-style:none">
+  <li class="row">🚄 <b>09:00</b> 郑州东乘高铁赴洛阳 → 09:40 洛阳龙门站</li>
+  <li class="row">🏛️ <b>10:15</b> 入园龙门石窟 → 先西山石窟（卢舍那大佛核心区，2-3 小时）→ 过桥东山石窟 → 香山寺 → 白园（全程 4-5 小时，建议 13:00 前入园）</li>
+  <li class="row">🍜 <b>午餐（已并入今日）</b>：龙门古街洛阳水席 / 羊肉汤 / 浆面条（人均 ¥40-60）<a class="attr" href="https://uri.amap.com/search?keyword=%E6%B4%9B%E9%98%B3%E6%B0%B4%E5%B8%AD" target="_blank">高德找店</a></li>
+  <li class="row">🛏️ <b>酒店（预算 300-400 元/晚）</b>：洛阳天心文化产业园·洛阳宾馆 约 ¥338-398；备选：洛阳华阳广场国际大酒店 ¥359-399 / 汉庭(洛阳龙门站店) ¥309-359 <span class="badge-r ba">⚪ 估算</span></li>
+  <li class="row">🌃 <b>17:30</b> 洛邑古城夜景（免费，亮灯约 19:00）→ 租汉服拍照</li>
+  <li class="row">🍜 <b>晚餐（已并入今日）</b>：洛阳老城牛肉汤 + 不翻汤 / 小街锅贴（人均 ¥20-40）<a class="attr" href="https://uri.amap.com/search?keyword=%E6%B4%9B%E9%98%B3%E7%89%9B%E8%82%89%E6%B1%A4" target="_blank">高德找店</a></li>
+ </ul>
+ <div class="plans">
+  <div class="good">✅ 补给：洛阳龙门站与石窟同区，站内有便利店；景区入口和古街有餐饮小卖部。</div>
+  <div class="warn">⚠️ 坑点：龙门石窟无现场售票，不预约进不去；爽约 2 次禁约 30 天。11 月起夜游暂停，只走日间。门票单次入园，出园不能再进，建议安排完整半天。</div>
+  <div class="plan">🔀 <b>本段 Plan B：</b>若龙门石窟约满，改去洛阳白马寺（约 ¥40）+ 应天门遗址；若时间充裕可加洛阳博物馆（免费）。</div>
+ </div>
+ <div class="mapbox"><div class="maptitle">看点实景</div><img class="imgs" src="https://pixabay.com/get/g72fec89a356bd42b2e9ffb929fefaf2f9b55e379e29ce714bc9b944f4e93ec509b3871a18e33c6eec7cde6a7f465e58cd34927b3fc53eff23b404649ff67e67a_1280.jpg" alt="洛阳龙门石窟卢舍那大佛"><small class="attr"><a href="https://pixabay.com/photos/longmen-grottoes-luoyang-2686242/" target="_blank">龙门石窟 · 卢舍那大佛（Pixabay）</a></small></div>
+ <button class='sc-btn' onclick='toggle(this)'><span>【龙门石窟】展开详细攻略</span><span class='arr'>▾</span></button><div class='sc-body'><span class='badge'>90元(旺季120元)</span> <span class='badge'>8:00-16:30售票(11月起夜游暂停)</span><div class='tt'>深度看点</div><p>中国四大石窟之一、世界文化遗产，开凿于北魏至北宋，现存窟龛2100多个、造像10万余尊。核心是西山石窟的卢舍那大佛（高17米），依山凿成、气魄宏大，是龙门标志。</p><div class='tt'>拍照打卡</div><p>📷 拍照打卡点：卢舍那大佛正前方平台、万佛洞、东山礼佛台（对望西山全景）。</p><div class='tt'>周边美食</div><p>🍜 周边美食：龙门古街有洛阳水席、羊肉汤、浆面条（人均40-60元）。</p><div class='tt'>游览动线</div><p>🗺 游览动线：入口→西山石窟（重点，2-3小时）→过伊河桥→东山石窟→香山寺→白园→出口。全程4-5小时。</p></div>
+<button class='sc-btn' onclick='toggle(this)'><span>【洛邑古城】展开详细攻略</span><span class='arr'>▾</span></button><div class='sc-body'><span class='badge'>免费(部分项目收费)</span> <span class='badge'>日间+夜场(亮灯约19:00)</span><div class='tt'>深度看点</div><p>以隋唐洛阳城为背景的沉浸式文化街区，亭台楼阁、小桥流水，入夜后灯光璀璨。可租汉服拍照，街内有非遗工坊、茶社、演艺。</p><div class='tt'>拍照打卡</div><p>📷 拍照打卡点：文峰塔夜景倒影、观景桥、汉服街。</p><div class='tt'>周边美食</div><p>🍜 周边美食：洛邑古城内有小吃街，出园可吃洛阳老城牛肉汤（人均20-40元）。</p><div class='tt'>游览动线</div><p>🗺 游览动线：傍晚入园→沿水系逛灯市→文峰塔广场看灯光秀→返程。约2小时。</p></div>
+ <a class="navbtn" href="https://uri.amap.com/marker?position=112.479,34.557&name=龙门石窟">一键导航</a>
+</div>
+
+  
+<div class="card" id="day3">
+ <div class="dayhead"><span class="daynum">DAY 3</span><span class="dayname">洛阳 → 开封 · 清明上河园宋文化一日</span><span class="mode">🚄 高铁 + 打车</span></div>
+ <div class="fields">
+  <div class="row"><span class="lab">起终点：</span><b>洛阳 → 开封北站 → 清明上河园 → 开封府</b></div>
+  <div class="row"><span class="lab">本段交通：</span>G 高铁 <b>09:00 洛阳龙门站发车 → 约 10:00 开封北站</b>（二等座约 ¥120-140）→ 打车 20 分钟到清明上河园<span class="badge-r br">🟢 实时</span></div>
+  <div class="row"><span class="lab">门票：</span>清明上河园 <b>120 元/人（半价 60 元）</b>，实名预约购票；《大宋·东京梦华》实景演出联票 249 元起<span class="badge-r br">🟢 实时</span></div>
+ </div>
+ <div class="mapbox"><div class="maptitle">本段示意路线 <span class="mapnote">示意图，非真实轨迹与比例</span></div><div id="dayMap3" style="width:100%;height:260px"></div></div>
+ <div class="mapbox"><div class="maptitle">清明上河园地图（高德官方网页）</div><iframe class="ifr" src="https://www.amap.com/search?query=%E6%B8%85%E6%98%8E%E4%B8%8A%E6%B2%B3%E5%9B%AD&city=%E5%BC%80%E5%B0%81" loading="lazy"></iframe></div>
+ <ul class="fields" style="list-style:none">
+  <li class="row">🚄 <b>09:00</b> 洛阳龙门乘高铁赴开封 → 10:00 开封北站</li>
+  <li class="row">🎏 <b>10:45</b> 入园清明上河园 → 包公迎宾/虹桥打卡 → 11:00 校场看《岳飞枪挑小梁王》马战 → 午食东京食坊</li>
+  <li class="row">🍜 <b>午餐（已并入今日）</b>：园内东京食坊灌汤包、炒凉粉、杏仁茶（人均 ¥30-50）<a class="attr" href="https://uri.amap.com/search?keyword=%E5%BC%80%E5%B0%81%E7%81%8C%E6%B1%A4%E5%8C%85" target="_blank">高德找店</a></li>
+  <li class="row">🏛️ <b>15:30</b> 开封府（约 ¥60）→ 大堂、梅花堂，看包公开衙表演</li>
+  <li class="row">🛏️ <b>酒店（预算 300-400 元/晚）</b>：锦江都城酒店(开封清明上河园店) 约 ¥338-388；备选：汉庭(开封鼓楼店) ¥309-359 / 维也纳(开封端门店) ¥319-369 <span class="badge-r ba">⚪ 估算</span></li>
+  <li class="row">🍜 <b>晚餐（已并入今日）</b>：鼓楼夜市灌汤小笼包（第一楼）、桶子鸡、羊肉炕馍（人均 ¥20-40）<a class="attr" href="https://uri.amap.com/search?keyword=%E5%BC%80%E5%B0%81%E9%BC%93%E6%A5%BC%E5%A4%9C%E5%B8%82" target="_blank">高德找店</a></li>
+  <li class="row">🌃 <b>20:10</b>（可选）回清明上河园看《大宋·东京梦华》水上实景演出</li>
+ </ul>
+ <div class="plans">
+  <div class="good">✅ 补给：清明上河园面积大，建议穿舒适平底鞋；园区与开封市区打车约 10-15 元，鼓楼夜市补给方便。</div>
+  <div class="warn">⚠️ 坑点：清明上河园本质是仿古主题公园；《东京梦华》冬季停演需确认；节假日演出前 1 小时看台坐满，建议提前占座。</div>
+  <div class="plan">🔀 <b>本段 Plan B：</b>若清明上河园人多，可上午先逛开封府，下午入园；若时间紧张可只玩清明上河园半天。</div>
+ </div>
+ <div class="mapbox"><div class="maptitle">看点实景</div><img class="imgs" src="https://images.pexels.com/photos/38492548/pexels-photo-38492548.jpeg?auto=compress&cs=tinysrgb&w=1000&q=75" alt="开封清明上河园夜景"><small class="attr"><a href="https://www.pexels.com/photo/night-view-of-illuminated-bridge-in-kaifeng-china-38492548/" target="_blank">清明上河园夜景（Pexels）</a></small></div>
+ <button class='sc-btn' onclick='toggle(this)'><span>【清明上河园】展开详细攻略</span><span class='arr'>▾</span></button><div class='sc-body'><span class='badge'>120元(半价60元)</span> <span class='badge'>9:00-18:00(演出20:10)</span><div class='tt'>深度看点</div><p>以北宋画家张择端《清明上河图》为蓝本1:1复原的宋文化主题公园，5A级景区。全天上百场街头演艺，招牌《大宋·东京梦华》水上实景演出每晚约20:10开演。</p><div class='tt'>拍照打卡</div><p>📷 拍照打卡点：虹桥、上善门城楼、景龙湖夜色、拂云阁。</p><div class='tt'>周边美食</div><p>🍜 周边美食：园内东京食坊的灌汤包、炒凉粉、杏仁茶（人均30-50元）。</p><div class='tt'>游览动线</div><p>🗺 游览动线：9:00迎宾门入园看包公迎宾→沿汴河看街头演艺→11:00校场看《岳飞枪挑小梁王》→午食→下午逛上善门、拂云阁→19:00回园占座看东京梦华→金水门出园。</p></div>
+<button class='sc-btn' onclick='toggle(this)'><span>【开封府】展开详细攻略</span><span class='arr'>▾</span></button><div class='sc-body'><span class='badge'>约60元</span> <span class='badge'>9:00-18:00</span><div class='tt'>深度看点</div><p>北宋开封府衙，包拯曾在此任职。府内有大堂、议事厅、梅花堂等，再现宋代衙门场景，定时有"包公开衙"等表演，讲解北宋吏治。</p><div class='tt'>拍照打卡</div><p>📷 拍照打卡点：府门石狮、大堂"明镜高悬"匾、梅花堂庭院。</p><div class='tt'>周边美食</div><p>🍜 周边美食：开封府附近鼓楼夜市有灌汤小笼包（第一楼）、桶子鸡、炒凉粉（人均20-40元）。</p><div class='tt'>游览动线</div><p>🗺 游览动线：府门→仪门→大堂→议事厅→后花园→梅花堂→登府城墙俯瞰老城。约1.5-2小时。</p></div>
+ <a class="navbtn" href="https://uri.amap.com/marker?position=114.343,34.825&name=清明上河园">一键导航</a>
+</div>
+
+  
+<div class="card" id="day4">
+ <div class="dayhead"><span class="daynum">DAY 4</span><span class="dayname">开封 → 郑州 → 返京</span><span class="mode">🚄 高铁（返程） / 🚗 自驾备选</span></div>
+ <div class="fields">
+  <div class="row"><span class="lab">起终点：</span><b>开封 → 郑州东站 → 北京西站</b></div>
+  <div class="row"><span class="lab">本段交通（高铁）：</span>G 高铁 <b>09:00 开封北站发车 → 约 09:35 郑州东 → 换乘返京高铁</b>（郑州东→北京西约 2.5h，二等座约 ¥315-371）<span class="badge-r br">🟢 实时</span></div>
+  <div class="row"><span class="lab">本段交通（自驾返程）：</span>开封 → 郑州 → <b>京港澳高速 G4 北行返京</b>，全程约 700km，纯驾驶 7.5-8h，返程需预留 9-10h（含休息）<span class="badge-r br">🟢 实时</span></div>
+ </div>
+ <div class="mapbox"><div class="maptitle">本段示意路线 <span class="mapnote">示意图，非真实轨迹与比例</span></div><div id="dayMap4" style="width:100%;height:260px"></div></div>
+ <div class="mapbox"><div class="maptitle">返程自驾示意（高德官方网页）</div><iframe class="ifr" src="https://www.amap.com/search?query=%E4%BA%AC%E6%B8%AF%E6%BE%B3%E9%AB%98%E9%80%9F&city=%E5%8C%97%E4%BA%AC" loading="lazy"></iframe></div>
+ <ul class="fields" style="list-style:none">
+  <li class="row">🚄 <b>09:00</b> 开封北乘高铁 → 郑州东换乘返京高铁，约 12:30 抵北京西</li>
+  <li class="row">🏪 <b>如上午有余力</b>：可在郑州东站附近郑州之林公园或站内稍作休整购伴手礼（大枣、道口烧鸡）</li>
+ </ul>
+ <div class="altgrid">
+  <div class="plan"><b>🚗 自驾方案（全程可选自驾，未超 1000km 距离规则）：</b><br>北京 → 郑州往返走 <b>京港澳高速 G4</b>（去程/返程同线）。单程约 693km，纯驾驶 7.5-8h，预留 9-10h。途经保定、石家庄、邢台、邯郸、安阳、新乡。<br>💰 过路费约 ¥311-330，油费约 ¥430（7L/100km 计），单程合计约 ¥750-800。<br>⛽ 沿途服务区：涿州、石家庄、安阳等大型服务区可加油充电，建议每 2-3h 或 200km 休息一次。<br>🚙 在郑州可继续延 G30 连霍高速向西去洛阳、向东去开封（约 100-130km），全程高速。</div>
+  <div class="plan"><b>🚄 高铁方案（推荐）：</b><br>去程 G371 10:05 北京西→12:24 郑州东（¥371）。返程郑州东→北京西任意 9 点后车次（约 2.5h，¥315-371）。郑州、洛阳、开封三城间用高铁串联，无需自驾，城市内打车/地铁即可。<br>💰 全程高铁往返约 ¥750-850/人，比自驾省心省力，适合 3-4 天紧凑行程。</div>
+ </div>
+ <div class="plans">
+  <div class="good">✅ 补给：郑州东站是全国高铁枢纽，站内餐饮、便利店、行李寄存齐全，返程候车方便。</div>
+  <div class="warn">⚠️ 坑点：返程高峰（周末/节假日）郑州东站进京方向车票紧张，建议提前 1-3 天购票；自驾返程避开节假日早高峰出城。</div>
+  <div class="plan">🔀 <b>本段 Plan B：</b>若郑州东无返京高铁票，可改从开封北/洛阳龙门直发北京车次（班次较少，需提前查）；自驾可提前查实时路况绕行京昆高速 G5。</div>
+ </div>
+ <a class="navbtn" href="https://uri.amap.com/marker?position=113.787,34.767&name=郑州东站">一键导航</a>
+</div>
+
+</div></section>
+
+<section><div class="wrap">
+<div class="appendix" id="appendix">
+ <h3>🆘 应急信息</h3>
+ <ul>
+  <li>全国统一求救 110 / 急救 120 / 高速救援 12122（河南段适用）</li>
+  <li>郑州市急救 120；洛阳急救 0379-120；开封急救 0371-120 <span class="badge-r ba">⚪ 估算</span></li>
+  <li>龙门石窟景区票务：微信「龙门石窟官微」；清明上河园票务 0371-25663819 <span class="badge-r br">🟢 实时</span></li>
+ </ul>
+ <h3>📅 生成信息与数据源</h3>
+ <ul>
+  <li>本路书生成于 <b>2026-11-15</b>，易变信息基于该时刻实时数据，出行前请二次确认。</li>
+  <li>高铁车次/票价：12306、同程（2026-11 抓取）<span class="badge-r br">🟢 实时</span></li>
+  <li>龙门石窟门票/预约：龙门石窟官微公告（2026-11 抓取）<span class="badge-r br">🟢 实时</span></li>
+  <li>清明上河园门票/演出：景区官网、官方公众号（2026-11 抓取）<span class="badge-r br">🟢 实时</span></li>
+  <li>自驾里程/过路费/油费：汽车之家、里程库（2026-10/11 抓取）<span class="badge-r br">🟢 实时</span></li>
+  <li>酒店价位、餐饮人均：AI 估算区间，实际以到店/平台为准 <span class="badge-r ba">⚪ 估算</span></li>
+ </ul>
+ <h3>🌦 天气与出行前复核</h3>
+ <ul>
+  <li>出行前查中央气象台郑州/洛阳/开封天气预报，河南春秋宜人、夏季炎热、冬季较冷。</li>
+  <li>一键复核：龙门石窟 <a href="https://www.amap.com/search?query=%E9%BE%99%E9%97%A8%E7%9F%B3%E7%AA%9F" target="_blank">官方预约</a> · 清明上河园 <a href="https://www.amap.com/search?query=%E6%B8%85%E6%98%8E%E4%B8%8A%E6%B2%B3%E5%9B%AD" target="_blank">官方购票</a> · 12306 <a href="https://www.12306.cn" target="_blank">购票</a></li>
+ </ul>
+ <h3>💴 花费预估（区间，参考 2026-11 数据）</h3>
+ <ul>
+  <li>高铁往返约 ¥750-850/人（郑州东往返）；跨城高铁（郑州-洛阳-开封）约 ¥250-350/人</li>
+  <li>门票合计约 ¥270-390/人（龙门石窟 90 + 清明上河园 120 + 开封府 60 + 白马寺 40 按选玩）</li>
+  <li>酒店 3 晚约 ¥900-1200（300-400 元/晚 × 3）</li>
+  <li>餐饮约 ¥150-250/天；市内打车/地铁约 ¥30-60/天</li>
+  <li>自驾方案往返油费+过路费约 ¥1500-1600（2 人分摊更省）</li>
+  <li>总预算参考：高铁方案约 ¥2000-2800/人（3-4 天）</li>
+ </ul>
+ <h3>🌍 全程全局兜底 Plan B</h3>
+ <ul>
+  <li>如天气/时间紧张：可压缩为郑州 2 天（省博+二七塔+洛阳龙门），放弃开封。</li>
+  <li>如节假日票紧：提前 7 天约龙门石窟、提前 3 天购返程高铁；自驾需提前查京港澳实时路况。</li>
+ </ul>
+</div>
+</div></section>
+
+<footer>北京 → 郑州 · 洛阳 · 开封 路书 · 生成于 <b>2026-11-15</b><br>数据来自 12306 / 龙门石窟官微 / 清明上河园 / 高德 · 页面与文件均为最新版</footer>
+
+<script>
+var placeNames = ['北京(起)','石家庄','郑州东','洛阳龙门站','开封北站','北京(终)'];
+var AMP = 0.10, PERIOD = 10;
+function buildRoute(){
+  var el = document.getElementById('routeMap');
+  if(!el) return;
+  var nodeData = placeNames.map(function(name,i,arr){
+    var n = arr.length, t = n > 1 ? i/(n-1) : 0.5;
+    var x = +(0.05 + t*0.90).toFixed(4);
+    var phase = (i % PERIOD)/PERIOD;
+    var tri = 2*Math.abs(2*(phase-Math.round(phase)))-1;
+    var y = +(0.5 + AMP*tri).toFixed(4);
+    return { name:name, x:x, y:y, symbolSize:(i===0||i===n-1)?24:16 };
+  });
+  var chart = echarts.init(el);
+  chart.setOption({
+    series: [{
+      type:'graph', layout:'none', roam:true, scaleLimit:{min:1,max:8},
+      data:nodeData, links:[
+  { source: '北京(起)', target: '石家庄', value: '280km' },
+  { source: '石家庄', target: '郑州东', value: '410km' },
+  { source: '郑州东', target: '洛阳龙门站', value: '150km 高铁' },
+  { source: '洛阳龙门站', target: '开封北站', value: '240km 高铁' },
+  { source: '开封北站', target: '北京(终)', value: '700km' }
+],
+      label:{show:true, position:'bottom', formatter:'{b}', color:'#2A1D14', fontSize:12},
+      edgeLabel:{show:true, formatter:'{c}', color:'#A8917E', fontSize:10},
+      lineStyle:{color:'#E8552D', curveness:0.15, width:2},
+      itemStyle:{color:function(params){return params.data.name.indexOf('起')!==-1||params.data.name.indexOf('终')!==-1?'#2A1D14':'#E8552D';}, borderColor:'#fff', borderWidth:2}
+    }]
+  });
+  window.addEventListener('resize', function(){ chart.resize(); });
+}
+var dayRoutesData = [
+{ nodes: ['北京(起)', '郑州东', '河南省博物院', '二七纪念塔'], links: [{source:'北京(起)',target:'郑州东',value:'690km 高铁'}, {source:'郑州东',target:'河南省博物院',value:'地铁10min'}, {source:'河南省博物院',target:'二七纪念塔',value:'地铁15min'}] },
+{ nodes: ['郑州(起)', '洛阳龙门站', '龙门石窟', '洛邑古城'], links: [{source:'郑州(起)',target:'洛阳龙门站',value:'高铁约40min'}, {source:'洛阳龙门站',target:'龙门石窟',value:'打车15min'}, {source:'龙门石窟',target:'洛邑古城',value:'打车25min'}] },
+{ nodes: ['洛阳(起)', '开封北站', '清明上河园', '开封府'], links: [{source:'洛阳(起)',target:'开封北站',value:'高铁约1h'}, {source:'开封北站',target:'清明上河园',value:'打车20min'}, {source:'清明上河园',target:'开封府',value:'公交20min'}] },
+{ nodes: ['开封(起)', '郑州东', '北京(终)'], links: [{source:'开封(起)',target:'郑州东',value:'高铁约35min'}, {source:'郑州东',target:'北京(终)',value:'高铁约2.5h'}] }
+];
+function buildDayMaps(){
+  dayRoutesData.forEach(function(route,idx){
+    var el = document.getElementById('dayMap'+(idx+1));
+    if(!el) return;
+    var boxW = el.clientWidth, boxH = el.clientHeight;
+    var marginX = 30, marginY = 40;
+    var nodeData = route.nodes.map(function(name,i,arr){
+      var n = arr.length, t = n > 1 ? i/(n-1) : 0.5;
+      var xRatio = +(0.05 + t*0.90).toFixed(4);
+      var phase = (i % PERIOD)/PERIOD;
+      var tri = 2*Math.abs(2*(phase-Math.round(phase)))-1;
+      var yRatio = +(0.5 + AMP*tri).toFixed(4);
+      return { name:name, x: marginX + xRatio*(boxW-marginX*2), y: marginY + yRatio*(boxH-marginY*2) };
+    });
+    var chart = echarts.init(el);
+    chart.setOption({
+      series: [{
+        type:'graph', layout:'none', roam:true, scaleLimit:{min:1,max:8},
+        data:nodeData, links:route.links,
+        label:{show:true, position:'bottom', formatter:'{b}', color:'#2A1D14', fontSize:11},
+        edgeLabel:{show:true, formatter:'{c}', color:'#A8917E', fontSize:9},
+        lineStyle:{color:'#E8552D', curveness:0.15, width:2},
+        itemStyle:{color:'#E8552D', borderColor:'#fff', borderWidth:2}
+      }]
+    });
+    window.addEventListener('resize', function(){ chart.resize(); });
+  });
+}
+function toggle(btn){
+  var body = btn.nextElementSibling;
+  var arr = btn.querySelector('.arr');
+  if(body.classList.contains('open')){ body.classList.remove('open'); arr.textContent='▾'; }
+  else { body.classList.add('open'); arr.textContent='▴'; }
+}
+(function(){
+  var navLinks = document.querySelectorAll('.nav-in a');
+  var sections = [];
+  for (var i=0;i<navLinks.length;i++){ var href=navLinks[i].getAttribute('href'); if(href) sections.push(document.getElementById(href.replace('#',''))); }
+  var navH = document.querySelector('nav.nav') ? document.querySelector('nav.nav').offsetHeight : 0;
+  function updateNav(){
+    var vh = window.innerHeight, current=0, best=-1;
+    for (var i=0;i<sections.length;i++){
+      if(!sections[i]) continue;
+      var r = sections[i].getBoundingClientRect();
+      var vt = Math.max(r.top, navH), vb = Math.min(r.bottom, vh);
+      var vis = Math.max(0, vb-vt);
+      if (vis>best){ best=vis; current=i; }
+    }
+    for (var j=0;j<navLinks.length;j++) navLinks[j].classList.toggle('active', j===current);
+  }
+  window.addEventListener('scroll', updateNav, {passive:true});
+  window.addEventListener('resize', updateNav, {passive:true});
+  updateNav();
+})();
+buildRoute();
+buildDayMaps();
+</script>
+
+<script>(function(){
+var d=document,b=d.body;if(!b)return;
+var old=b.querySelectorAll('[data-aigc-mark],#__xas_aigc_watermark__');
+for(var k=0;k<old.length;k++)old[k].parentNode&&old[k].parentNode.removeChild(old[k]);
+var f=d.createElement("div");
+f.id="__xas_aigc_watermark__";
+f.setAttribute("data-aigc-mark","true");
+f.style.cssText="position:fixed;bottom:8px;right:12px;z-index:2147483647;font-size:11px;padding:3px 7px;font-family:system-ui,sans-serif;pointer-events:none;color:rgba(30,30,30,0.6);background:rgba(255,255,255,0.4);border:0.5px solid rgba(0,0,0,0.08);border-radius:4px;line-height:1.4;backdrop-filter:blur(8px);";
+var paths=["M14.0072 26.6377C14.2318 25.9475 13.3696 25.4389 12.8659 25.9611C9.56694 29.3941 6.9736 33.4696 5.35587 37.9788C-0.86998 55.1279 7.72006 74.1728 24.7867 80.6891C33.1499 83.8815 41.0252 82.7894 44.7212 81.8812C54.0056 79.6016 63.1537 72.4609 66.7114 63.4447C67.1039 62.4525 66.6252 61.3286 65.6404 60.9222C63.78 60.1548 61.9263 59.3896 60.3721 58.7471C59.46 58.3702 58.4117 58.7402 57.9398 59.6076C56.4287 62.3753 54.8496 65.0568 52.4945 67.2274C46.0349 73.5893 36.1675 75.8621 27.5956 72.9036C14.6833 68.6487 7.76998 54.5307 12.124 41.7683C12.3668 41.0553 12.4916 40.3038 12.4621 39.55C12.242 33.8125 12.8228 30.2955 14.0072 26.6377Z","M73.6785 14.313C74.3682 14.5378 74.8765 13.675 74.3546 13.171C70.9241 9.86968 66.8514 7.27451 62.3454 5.65564C45.2084 -0.574603 26.1769 8.0215 19.6651 25.1002C16.4751 33.4692 17.5664 41.3501 18.474 45.0488C20.7519 54.3396 27.8876 63.4943 36.8974 67.0544C37.8889 67.4472 39.012 66.9681 39.4182 65.9827C40.185 64.1209 40.9497 62.2659 41.5918 60.7107C41.9684 59.7979 41.5986 58.7489 40.7318 58.2767C37.9661 56.7645 35.2865 55.1843 33.1174 52.8275C26.76 46.3634 24.4888 36.489 27.4452 27.9111C31.6971 14.9897 45.8051 8.07145 58.5586 12.4285C59.271 12.6715 60.022 12.7964 60.7753 12.7668C66.5088 12.5466 70.0233 13.1278 73.6785 14.313Z","M85.9922 73.9549C85.7676 74.6451 86.6298 75.1537 87.1335 74.6315C90.4324 71.1985 93.0258 67.123 94.6435 62.6138C100.869 45.4647 92.2793 26.4198 75.2127 19.9035C66.8495 16.7111 58.9742 17.8033 55.2782 18.7114C45.9938 20.991 36.8456 28.1317 33.288 37.1479C32.8955 38.1401 33.3742 39.264 34.3589 39.6704C36.2194 40.4378 38.0731 41.203 39.6273 41.8455C40.5394 42.2224 41.5876 41.8524 42.0596 40.985C43.5706 38.2173 45.1498 35.5358 47.5049 33.3652C53.9645 27.0033 63.8319 24.7305 72.4038 27.689C85.3161 31.9439 92.2294 46.0619 87.8754 58.8243C87.6326 59.5373 87.5078 60.2888 87.5373 61.0426C87.7574 66.7801 87.1766 70.2971 85.9922 73.9549Z","M26.2674 86.2849C25.5777 86.0601 25.0694 86.9229 25.5913 87.4269C29.0219 90.7282 33.0945 93.3234 37.6028 94.9423C54.7398 101.173 73.7713 92.5764 80.2831 75.4977C83.4731 67.1287 82.3818 59.2478 81.4742 55.5491C79.1963 46.2583 72.0606 37.1036 63.0508 33.5435C62.0593 33.1507 60.9362 33.6298 60.53 34.6152C59.7632 36.477 58.9985 38.3297 58.3564 39.885C57.9798 40.7977 58.3496 41.8467 59.2163 42.3212C61.9821 43.8334 64.6617 45.4114 66.8285 47.7704C73.1859 54.2345 75.4571 64.1089 72.5007 72.6869C68.2488 85.6082 54.1408 92.5265 41.3874 88.1694C40.6749 87.9264 39.9239 87.8015 39.1706 87.8311C33.4371 88.0513 29.9226 87.4701 26.2674 86.2826V86.2849Z"];
+b.appendChild(f);
+var svg='<svg width="14" height="14" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline;vertical-align:-2px;margin:0 4px">';
+for(var i=0;i<paths.length;i++)svg+='<path d="'+paths[i]+'" fill="rgba(30,30,30,0.5)"/>';
+svg+="</svg>";
+f.innerHTML="本页面由"+svg+"超级小爱AI生成";
+})();</script>
+</body>
+</html>
